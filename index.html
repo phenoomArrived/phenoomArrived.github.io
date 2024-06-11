@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phenoom</title>
+    <link rel="icon" href="f3bf7b87c59946c16c5bf7098e7d1215.jpg" type="image/x-icon">
+    <meta content="ThePhenoom" property="og:title">
+    <meta property="og:image" content="gif-photo.gif">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta content="Bolsonaro" property="og:description">
     <link rel="stylesheet" href="index.css"/>
 </head>
 <body>
@@ -21,11 +28,11 @@
         </div>
         <hr>
         <div class="contacts">
-            <div class="contact" id="contact-button" data-url="https://discord.com/users/1222252187233550421">
-                <img src="discord-mark-white.png">
+            <div class="contact" id="contact-button" onclick="actionContact('https://discord.com/users/1222252187233550421')">
+                <img src="discord-mark-white.png" data-url="https://discord.com/users/1222252187233550421">
                 <h2>thephenoom</h2>
             </div>
-            <div class="contact" id="contact-button" data-url="https://github.com/phenoomArrived">
+            <div class="contact" id="contact-button" onclick="actionContact('https://github.com/phenoomArrived')">
                 <img src="github-mark.png">
                 <h2>phenoomArrived</h2>
             </div>
@@ -36,6 +43,8 @@
         const musicButton = document.getElementById("music-button");
         const img = musicButton.querySelector("img");
         const container = document.getElementById('container');
+        // -----
+        
         function imagem() {
             if (img.src.includes("pause.png")) {
                 music.pause();
@@ -47,14 +56,13 @@
                 img.src = "pause.png";
             }
         };
-        const actionContact = (c) => {
-            const url = c.target.getAttribute('data-url');
-            console.log(url)
-            window.location = url
-        };
-        const contacts = document.getElementById('contact-button');
-        contacts.addEventListener("click", actionContact)
+
         musicButton.addEventListener("click", imagem);
+        // -----
+
+        const actionContact = (c) => {
+            window.open(c)
+        };
     </script>
 </body>
 </html>
