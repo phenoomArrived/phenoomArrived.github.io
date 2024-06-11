@@ -1,68 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phenoom</title>
-    <link rel="icon" href="f3bf7b87c59946c16c5bf7098e7d1215.jpg" type="image/x-icon">
-    <meta content="ThePhenoom" property="og:title">
-    <meta property="og:image" content="https://tenor.com/b2dOO.gif">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta content="Bolsonaro" property="og:description">
-    <link rel="stylesheet" href="index.css"/>
-</head>
-<body>
-    <audio id="music">
-        <source src="music.mp3" type="audio/mpeg">
-        Seu browser não possui suporte
-    </audio>
-    <div class="container" id="container">
-        <div class="user-info">
-            <img src="f3bf7b87c59946c16c5bf7098e7d1215.jpg">
-            <h1>The Phenoom</h1>
-            <div class="music-button" id="music-button">
-                <img src="play.png">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Phenoom</title>
+        <link rel="icon" href="f3bf7b87c59946c16c5bf7098e7d1215.jpg" type="image/x-icon">
+        <meta content="ThePhenoom" property="og:title">
+        <meta property="og:image" content="https://steamuserimages-a.akamaihd.net/ugc/2041857428767048529/FCB21692426130FD0E69C481AD438B21C4E57D61/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta content="Olá, eu sou ThePhenoom!" property="og:description">
+        <link rel="stylesheet" href="index.css"/>
+    </head>
+    <body>
+        <audio id="music">
+            <source src="music.mp3" type="audio/mpeg">
+            Seu browser não possui suporte
+        </audio>
+        <div class="container" id="container">
+            <div class="user-info">
+                <img src="f3bf7b87c59946c16c5bf7098e7d1215.jpg">
+                <h1>The Phenoom</h1>
+                <div class="music-button" id="music-button">
+                    <img src="play.png">
+                </div>
+            </div>
+            <hr>
+            <div class="contacts">
+                <div class="contact" id="contact-button" onclick="actionContact('https://discord.com/users/1222252187233550421')">
+                    <img src="discord-mark-white.png" data-url="https://discord.com/users/1222252187233550421">
+                    <h2>thephenoom</h2>
+                </div>
+                <div class="contact" id="contact-button" onclick="actionContact('https://github.com/phenoomArrived')">
+                    <img src="github-mark.png">
+                    <h2>phenoomArrived</h2>
+                </div>
             </div>
         </div>
-        <hr>
-        <div class="contacts">
-            <div class="contact" id="contact-button" onclick="actionContact('https://discord.com/users/1222252187233550421')">
-                <img src="discord-mark-white.png" data-url="https://discord.com/users/1222252187233550421">
-                <h2>thephenoom</h2>
-            </div>
-            <div class="contact" id="contact-button" onclick="actionContact('https://github.com/phenoomArrived')">
-                <img src="github-mark.png">
-                <h2>phenoomArrived</h2>
-            </div>
-        </div>
-    </div>
-    <script>
-        const music = document.getElementById('music')
-        const musicButton = document.getElementById("music-button");
-        const img = musicButton.querySelector("img");
-        const container = document.getElementById('container');
-        // -----
-        
-        function imagem() {
-            if (img.src.includes("pause.png")) {
+        <script>
+            const music = document.getElementById('music')
+            const musicButton = document.getElementById("music-button");
+            const img = musicButton.querySelector("img");
+            const container = document.getElementById('container');
+            // -----
+            
+            function imagem() {
+                if (img.src.includes("pause.png")) {
+                    music.pause();
+                    container.classList.remove("active");
+                    img.src = "play.png";
+                } else {
+                    music.play();
+                    container.classList.add("active");
+                    img.src = "pause.png";
+                }
+            };
+
+            musicButton.addEventListener("click", imagem);
+            music.addEventListener("ended", async() => {
                 music.pause();
                 container.classList.remove("active");
                 img.src = "play.png";
-            } else {
-                music.play();
-                container.classList.add("active");
-                img.src = "pause.png";
-            }
-        };
+            })
+            // -----
 
-        musicButton.addEventListener("click", imagem);
-        // -----
-
-        const actionContact = (c) => {
-            window.open(c)
-        };
-    </script>
-</body>
-</html>
+            const actionContact = (c) => {
+                window.open(c)
+            };
+        </script>
+    </body>
+    </html>
