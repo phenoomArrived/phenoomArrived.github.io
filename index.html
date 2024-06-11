@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phenoom</title>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+    <audio id="music">
+        <source src="music.mp3" type="audio/mpeg">
+        Seu browser não possui suporte
+    </audio>
+    <div class="container" id="container">
+        <div class="user-info">
+            <img src="f3bf7b87c59946c16c5bf7098e7d1215.jpg">
+            <h1>The Phenoom</h1>
+            <div class="music-button" id="music-button">
+                <img src="play.png">
+            </div>
+        </div>
+        <hr>
+        <div class="contacts">
+            <div class="contact" id="contact-button" data-url="https://discord.com/users/1222252187233550421">
+                <img src="discord-mark-white.png">
+                <h2>thephenoom</h2>
+            </div>
+            <div class="contact" id="contact-button" data-url="https://github.com/phenoomArrived">
+                <img src="github-mark.png">
+                <h2>phenoomArrived</h2>
+            </div>
+        </div>
+    </div>
+    <script>
+        const music = document.getElementById('music')
+        const musicButton = document.getElementById("music-button");
+        const img = musicButton.querySelector("img");
+        const container = document.getElementById('container');
+        function imagem() {
+            if (img.src.includes("pause.png")) {
+                music.pause();
+                container.classList.remove("active");
+                img.src = "play.png";
+            } else {
+                music.play();
+                container.classList.add("active");
+                img.src = "pause.png";
+            }
+        };
+        const actionContact = (c) => {
+            const url = c.target.getAttribute('data-url');
+            console.log(url)
+            window.location = url
+        };
+        const contacts = document.getElementById('contact-button');
+        contacts.addEventListener("click", actionContact)
+        musicButton.addEventListener("click", imagem);
+    </script>
+</body>
+</html>
