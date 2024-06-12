@@ -6,24 +6,32 @@
         <title>Phenoom</title>
         <link rel="icon" href="f3bf7b87c59946c16c5bf7098e7d1215.jpg" type="image/x-icon">
         <meta content="ThePhenoom" property="og:title">
-        <meta property="og:image" content="https://tenor.com/b2dOO.gif">
-        <meta property="og:image:type" content="image/png">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
+        <meta content='https://i.pinimg.com/236x/f3/bf/7b/f3bf7b87c59946c16c5bf7098e7d1215.jpg' property='og:image'>
         <meta content="Olá, eu sou ThePhenoom!" property="og:description">
         <link rel="stylesheet" href="index.css"/>
     </head>
     <body>
-        <audio id="music">
-            <source src="music.mp3" type="audio/mpeg">
-            Seu browser não possui suporte
-        </audio>
         <div class="container" id="container">
             <div class="user-info">
                 <img src="f3bf7b87c59946c16c5bf7098e7d1215.jpg">
                 <h1>The Phenoom</h1>
-                <div class="music-button" id="music-button">
-                    <img src="play.png">
+                <div class="music">
+                    <div class="player">
+                        <video id="music" ontimeupdate="progressBar()" poster="posteer.png">
+                            <source src="Frozy - Kompa ( sped up ) (720p60).mp4" type="video/mp4">
+                            Seu browser não possui suporte
+                        </video>
+                        <div class="Progress-Bar">
+                            <div class="Progress-Area"></div>
+                        </div>
+                        <div class="counts">
+                            <h1 id="currentTime">0:00</h1>
+                            <h1 id="totalTime">0:00</h1>
+                        </div>
+                    </div>
+                    <div class="music-button" id="music-button">
+                        <img src="play.png">
+                    </div>
                 </div>
             </div>
             <hr>
@@ -39,6 +47,7 @@
             </div>
         </div>
         <script>
+            const Progress_Area = document.querySelector('.Progress-Area');
             const music = document.getElementById('music')
             const musicButton = document.getElementById("music-button");
             const img = musicButton.querySelector("img");
@@ -68,6 +77,31 @@
             const actionContact = (c) => {
                 window.open(c)
             };
+            // -----
+            const ValueCurrentTime = document.getElementById('currentTime');
+            const ValueMaxTime = document.getElementById('totalTime');
+
+            const progressBar = () => {
+                const tamanho = music.duration;
+                const TempoAtual = music.currentTime;
+                const progressAmount = ( TempoAtual / tamanho ) * 100;
+                const currentMinuto = Math.floor(TempoAtual / 60);
+                let currentSec = Math.floor(TempoAtual % 60);
+                if(currentSec < 10) {
+                    currentSec = `0${currentSec}`
+                }
+                ValueCurrentTime.innerText = `${currentMinuto}:${currentSec}`
+                Progress_Area.style.width = `${progressAmount}%`
+            }
+            music.addEventListener("loadeddata", () => {
+                const tamanho = music.duration;
+                const currentMinuto = Math.floor(tamanho / 60);
+                let currentSec = Math.floor(tamanho % 60);
+                if(currentSec < 10) {
+                    currentSec = `0${currentSec}`
+                }
+                ValueMaxTime.innerText = `${currentMinuto}:${currentSec}`
+            });
         </script>
     </body>
     </html>

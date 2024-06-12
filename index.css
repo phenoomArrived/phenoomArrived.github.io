@@ -7,12 +7,12 @@ body {
 }
 .music-button {
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 .music-button img {
-    width: 100%;
-    height: 100%;
+    width: 40px;
+    height: 40px;
 }
 .container {
     margin-top: 50px;
@@ -27,6 +27,12 @@ body {
     align-items: center;
     flex-direction: column;
 }
+.player {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 hr {
     border: 0;
     height: 0.5px;
@@ -38,6 +44,7 @@ hr {
 .user-info {
     width: 100%;
     align-items: center;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
 
@@ -53,6 +60,52 @@ hr {
     width: 200px;
     border-radius: 100%;
     box-shadow: 0 0 20px ;
+}
+video {
+    width: 100px;
+    margin: 5px;
+    border-radius: 10px;
+}
+.music {
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    background-size: cover;
+    background-image: url('./2b74dbae3404bd472f384e88f7e11056.jpg');
+    align-items: center;
+}
+.Progress-Bar {
+    width: 105px;
+    height: 10px;
+    background-color: #0D0D0D;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Progress-Area {
+    width: 0%;
+    height: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: purple;
+}
+.counts {
+    display: flex;
+    width: 105px;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+}
+.counts h1 {
+    font-size: 10px;
+    margin: 0;
+    margin: 1px;
+    padding: 2px;
+    background-color: #0D0D0D;
+    border-radius: 5px;
+    box-shadow: 0 0 0 black;
 }
 /* Contacts */
 .contacts {
@@ -75,6 +128,7 @@ hr {
     cursor: pointer;
     border-radius: 10px;
     padding: 5px;
+    z-index: 1;
     background-color: #1d1d1d;
     box-shadow: 0 0 10px black;
 }
@@ -83,6 +137,7 @@ hr {
     margin-left: 5px;
 }
 .contact h2 {
+    user-select: none;
     margin-left: 10px;
     color: white;
     font-size: 16px;
